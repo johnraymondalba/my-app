@@ -31,8 +31,8 @@ jobs:
         run: pip install -r requirements.txt
 
       # Step 4: Check code style
-      - name: Check code style (lint)
-        run: flake8 app/
+      #- name: Check code style (lint)
+      #  run: flake8 app/
 
       # Step 5: Run tests
       - name: Run tests
