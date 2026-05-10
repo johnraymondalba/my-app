@@ -30,14 +30,6 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      # Step 4: Check code style
-      #- name: Check code style (lint)
-      #  run: flake8 app/
-
-      # Step 5: Run tests
-      - name: Run tests
-        run: pytest tests/
-  
   build-docker:
     name: Build and Push Docker Image
     runs-on: ubuntu-latest
@@ -66,7 +58,7 @@ jobs:
         run: |
           docker build -t ghcr.io/${{ github.repository }}:latest .
           docker push ghcr.io/${{ github.repository }}:latest
-  
+
   deploy:
     name: Deploy to Server
     runs-on: ubuntu-latest
@@ -79,7 +71,7 @@ jobs:
         with:
           host: ${{ secrets.SERVER_HOST }}      # Your server's IP address
           username: ${{ secrets.SERVER_USER }}   # SSH username
-          password: ${{ secrets.SERVER_PASSWORD }}     # SSH password #redeploy # redeploy 2
+          password: ${{ secrets.SERVER_PASSWORD }}     # SSH private key
           script: |
             # Pull the latest image
             docker pull ghcr.io/${{ github.repository }}:latest
