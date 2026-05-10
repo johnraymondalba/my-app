@@ -79,7 +79,7 @@ jobs:
         with:
           host: ${{ secrets.SERVER_HOST }}      # Your server's IP address
           username: ${{ secrets.SERVER_USER }}   # SSH username
-          password: ${{ secrets.SERVER_PASSWORD }}     # SSH password #redeploy
+          password: ${{ secrets.SERVER_PASSWORD }}     # SSH password #redeploy # redeploy 2
           script: |
             # Pull the latest image
             docker pull ghcr.io/${{ github.repository }}:latest
