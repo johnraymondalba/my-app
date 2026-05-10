@@ -79,7 +79,7 @@ jobs:
         with:
           host: ${{ secrets.SERVER_HOST }}      # Your server's IP address
           username: ${{ secrets.SERVER_USER }}   # SSH username
-          password: ${{ secrets.SERVER_PASSWORD }}     # SSH password
+          password: ${{ secrets.SERVER_PASSWORD }}     # SSH password #redeploy
           script: |
             # Pull the latest image
             docker pull ghcr.io/${{ github.repository }}:latest
@@ -89,4 +89,3 @@ jobs:
             # Start the new one
             docker run -d --name my-app -p 80:5000 ghcr.io/${{ github.repository }}:latest
             echo "Deployed successfully!"
- 
